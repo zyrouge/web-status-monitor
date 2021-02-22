@@ -1,0 +1,28 @@
+{
+  "name": "pong",
+  "version": "1.0.0",
+  "description": "Ping websites at regular intervals using just GitHub Actions!",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zyrouge/pong.git"
+  },
+  "keywords": [],
+  "author": "ZYROUGE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zyrouge/pong/issues"
+  },
+  "homepage": "https://github.com/zyrouge/pong#readme",
+  "dependencies": {
+    "@types/fs-extra": "^9.0.7",
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "fs-extra": "^9.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5",
+    "yaml": "^1.10.0"
+  }
+}
