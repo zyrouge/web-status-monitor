@@ -1,0 +1,3 @@
+urls:
+  - path: "https://google.com"
+    type: "get"
