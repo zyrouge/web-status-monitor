@@ -16,7 +16,7 @@ A scheduled GitHub action runs every 5 minutes that pings all the urls after whi
 
 ## ❔ Documentation
 
-### Configuration [config.yml](config.yml)
+### Configuration - [config.yml](config.yml)
 
 Option | Type | Description
 --- | --- | ---
