@@ -15,7 +15,10 @@ const start = async () => {
         try {
             await axios({
                 url: url.path,
-                method: url.type
+                method: url.type,
+                headers: {
+                    "User-Agent": config.userAgent || url.userAgent || `Pong [bot]`
+                }
             });
             Logger.log(`Pong ${chalk.blueBright(`${url.path} (${url.type})`)} in ${chalk.grey(`${Date.now() - start}ms`)}`);
             isUp = true;
@@ -41,7 +44,9 @@ interface IConfig {
     urls: {
         path: string;
         type: Method;
+        userAgent: string;
     }[];
+    userAgent: string;
 }
 
 async function getConfig(): Promise<IConfig> {
