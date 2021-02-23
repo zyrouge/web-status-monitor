@@ -1,3 +1,5 @@
+# Refer https://github.com/zyrouge/pong#configuration for documentation
+
 urls:
   - path: "https://google.com"
     type: "get"
