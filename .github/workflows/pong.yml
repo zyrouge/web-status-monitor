@@ -17,4 +17,17 @@ jobs:
         with:
           node-version: "12.18.3"
       
-      - run: cd src && npm install && npm start
+      - name: Run pong
+        run: cd src && npm install && npm start
+
+      - name: Commit files
+        run: |
+          git config --local user.email "bot@zyrouge.gq"
+          git config --local user.name "Pong [bot]"
+          git add .
+          git commit -m "🗒️ Updated Summary"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
