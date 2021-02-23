@@ -2,7 +2,8 @@
 
 Ping websites at regular intervals using just GitHub Actions!
 
-[View Summary](summary.md)
+- [View Summary](summary.md)
+- [Edit Config](config.yml)
 
 ## 🤔 How does it work?
 
@@ -16,7 +17,7 @@ A scheduled GitHub action runs every 5 minutes that pings all the urls after whi
 
 ## ❔ Documentation
 
-### Configuration - [config.yml](config.yml)
+### Configuration
 
 Option | Type | Description
 --- | --- | ---
