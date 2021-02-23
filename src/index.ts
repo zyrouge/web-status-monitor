@@ -11,7 +11,7 @@ const start = async () => {
     const summary: ISummary[] = [];
     for (const url of config.urls) {
         let isUp: boolean;
-        const start: number = Date.now();
+        const start = Date.now();
         try {
             await axios({
                 url: url.path,
@@ -19,7 +19,6 @@ const start = async () => {
             });
             Logger.log(`Pong ${chalk.blueBright(`${url.path} (${url.type})`)} in ${chalk.grey(`${Date.now() - start}ms`)}`);
             isUp = true;
-            timetaken = end;
         } catch (err) {
             Logger.error(`Pinging ${chalk.blueBright(url)} failed, reason: ${chalk.redBright(err)}`);
             isUp = false;
@@ -71,6 +70,6 @@ async function renderSummary(opts: ISummary[]): Promise<void> {
         let sum = template.replace("<!-- State -->", opts.map(x => `- \`${x.type.toUpperCase()}\` [${x.path}](${x.path}) - ${x.up ? "Up" : "Down"} (${x.timetaken})`).join("\n"));
         await fs.writeFile(out, sum);
     } catch(err) {
-        return Logger.error(`Could not parse template from ${chalk.blueBright(rp)}, reason: ${chalk.redBright(err)}`);
+        return Logger.error(`Could not parse template from ${chalk.blueBright(temp)}, reason: ${chalk.redBright(err)}`);
     }
 }
