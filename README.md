@@ -24,6 +24,8 @@ Option | Type | Description
 `urls` | `url[]` | URLs to be pinged
 `url.path` | `string` | Actual URL
 `url.type` | `string` | HTTP request type
+`url.userAgent` | `string` | Custom `User-Agent` header (specific url)
+`userAgent` | `string` | Custom `User-Agent` header
 
 ## 📃 License
 
