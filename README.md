@@ -1,6 +1,6 @@
 <h1 align="center">🏓 Pong</h1>
 
-Ping websites at regular intervals using just GitHub Actions!
+<p align="center">Ping websites at regular intervals using just GitHub Actions!</p>
 
 - [View Summary](summary.md)
 - [Edit Config](config.yml)
