@@ -30,7 +30,9 @@ const start = async () => {
             up: isUp
         });
     }
+    Logger.log(`Finished pinging ${chalk.blueBright(config.urls.toString())} urls`);
     await renderSummary(summary);
+    Logger.log("Finished rendering summary.md");
 }
 
 start();
@@ -67,7 +69,8 @@ async function renderSummary(opts: ISummary[]): Promise<void> {
     try {
         const rc = await fs.readFile(temp);
         const template = rc.toString();
-        let sum = template.replace("<!-- State -->", opts.map(x => `- \`${x.type.toUpperCase()}\` [${x.path}](${x.path}) - ${x.up ? "Up" : "Down"} (${x.timetaken})`).join("\n"));
+        let sum = template.replace("<!-- State -->", opts.map(x => `- \`${x.type.toUpperCase()}\` [${x.path}](${x.path}) - **${x.up ? "Up" : "Down"}** (${x.timetaken}ms)`).join("\n"));
+        sum = sum.replace("<!-- Last Updated -->", new Date().toLocaleString());
         await fs.writeFile(out, sum);
     } catch(err) {
         return Logger.error(`Could not parse template from ${chalk.blueBright(temp)}, reason: ${chalk.redBright(err)}`);
