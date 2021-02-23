@@ -17,7 +17,7 @@ const start = async () => {
                 url: url.path,
                 method: url.type,
                 headers: {
-                    "User-Agent": config.userAgent || url.userAgent || `Pong [bot]`
+                    "User-Agent": url.userAgent || config.userAgent || `Pong [bot]`
                 }
             });
             Logger.log(`Pong ${chalk.blueBright(`${url.path} (${url.type})`)} in ${chalk.grey(`${Date.now() - start}ms`)}`);
