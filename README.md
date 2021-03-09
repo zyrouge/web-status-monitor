@@ -1,3 +1,4 @@
+<p align="center"><img src="https://github.com/zyrouge/web-status-monitor/blob/main/assets/wsm.png?raw=true"></img></p>
 <h1 align="center">🛸 Web Status Monitor</h1>
 <p align="center">Ping websites at regular intervals using just GitHub Actions!</p>
 
