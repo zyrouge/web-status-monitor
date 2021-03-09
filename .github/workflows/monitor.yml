@@ -1,4 +1,4 @@
-name: Pong
+name: Monitor
 
 on:
   workflow_dispatch:
