@@ -12,22 +12,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use NodeJS v12.18.3
-        uses: actions/setup-node@v1
+
+      - uses: actions/setup-node@v1
         with:
           node-version: "12.18.3"
       
-      - name: Run pong
+      - name: 🛸 Check status
         run: cd src && npm install && npm start
 
-      - name: Commit files
+      - name: ⌨️ Commit files
         run: |
           git config --local user.email "bot@zyrouge.gq"
           git config --local user.name "Pong [bot]"
           git add .
           git commit -m "🗒️ Updated Summary"
 
-      - name: Push changes
+      - name: 🚀 Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
