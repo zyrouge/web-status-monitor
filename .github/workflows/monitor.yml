@@ -22,7 +22,7 @@ jobs:
       - name: ⌨️ Commit files
         run: |
           git config --local user.email "bot@zyrouge.gq"
-          git config --local user.name "Pong [bot]"
+          git config --local user.name  WSM [bot]"
           git add .
           git commit -m "🗒️ Updated Summary"
 
