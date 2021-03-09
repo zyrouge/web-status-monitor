@@ -1,5 +1,4 @@
-<h1 align="center">🏓 Pong</h1>
-
+<h1 align="center">🛸 Web Status Monitor</h1>
 <p align="center">Ping websites at regular intervals using just GitHub Actions!</p>
 
 - [View Summary](summary.md)
@@ -9,7 +8,7 @@
 
 A scheduled GitHub action runs every 5 minutes that pings all the urls after which the [summary](summary.md) is rendered. It's that simple!
 
-## ⚙️ Setting up
+## 🚀 Setting up
 
 - Create repo from this template
 - Add urls in `config.yml`
