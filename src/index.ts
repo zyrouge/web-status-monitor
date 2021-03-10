@@ -33,7 +33,7 @@ const start = async () => {
             up: isUp
         });
     }
-    Logger.log(`Finished pinging ${chalk.blueBright(config.urls.toString())} urls`);
+    Logger.log(`Finished pinging ${chalk.blueBright(config.urls.length)} urls`);
     await renderSummary(summary);
     Logger.log("Finished rendering summary.md");
 }
