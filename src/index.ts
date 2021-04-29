@@ -74,8 +74,8 @@ async function renderSummary(opts: ISummary[]): Promise<void> {
     try {
         const rc = await fs.readFile(temp);
         const template = rc.toString();
-        let sum = template.replace("<!-- State -->", opts.map(x => `- \`${x.type.toUpperCase()}\` [${x.path}](${x.path}) - **${x.up ? "Up" : "Down"}** (${x.timetaken}ms)`).join("\n"));
-        sum = sum.replace("<!-- Last Updated -->", new Date().toLocaleString());
+        let sum = template.replace(new RegExp("<!-- State -->", "g"), opts.map(x => `- \`${x.type.toUpperCase()}\` [${x.path}](${x.path}) - **${x.up ? "Up" : "Down"}** (${x.timetaken}ms)`).join("\n"));
+        sum = sum.replace(new RegExp("<!-- Last Updated -->", "g"), new Date().toLocaleString());
         await fs.writeFile(out, sum);
     } catch(err) {
         return Logger.error(`Could not parse template from ${chalk.blueBright(temp)}, reason: ${chalk.redBright(err)}`);
