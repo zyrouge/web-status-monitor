@@ -1,4 +1,4 @@
 # 📖 Summary
-Last updated: **<!-- Last Updated -->**
+Last updated: **{{ lastUpdated }}**
 
-<!-- State -->
+{{ state }}
