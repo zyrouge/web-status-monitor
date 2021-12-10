@@ -1,4 +1,4 @@
 # 📖 Summary
-Last updated: **12/10/2021, 9:57:56 AM**
+Last updated: **12/10/2021, 10:13:59 AM**
 
-- `GET` [https://google.com](https://google.com) - **Up** (116ms)
+- `GET` [https://google.com](https://google.com) - **Down** (99ms)
