@@ -2,8 +2,8 @@
 <h1 align="center">🛸 Web Status Monitor</h1>
 <p align="center">Ping websites at regular intervals using just GitHub Actions!</p>
 
--   [View Summary](summary.md)
--   [Edit Config](config.yml)
+-   [View Summary](./summary.md)
+-   [Edit Config](./config.yaml)
 
 ## 🤔 How does it work?
 
