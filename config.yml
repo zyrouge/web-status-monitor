@@ -1,5 +1,4 @@
-# Refer https://github.com/zyrouge/pong#configuration for documentation
-
+# Refer https://github.com/zyrouge/web-status-monitor#configuration for documentation
 urls:
-  - path: "https://google.com"
-    type: "get"
+    - path: "https://google.com"
+      type: "get"

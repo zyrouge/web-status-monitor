@@ -1,5 +1,5 @@
 import axios, { Method } from "axios";
-import ymlp from "yaml";
+import yaml from "yaml";
 import path from "path";
 import fs from "fs-extra";
 
@@ -17,26 +17,35 @@ const start = async () => {
                 url: url.path,
                 method: url.type,
                 headers: {
-                    "User-Agent": url.userAgent || config.userAgent || `Pong [bot]`
-                }
+                    "User-Agent":
+                        url.userAgent || config.userAgent || `Pong [bot]`,
+                },
             });
-            Logger.log(`Pong ${chalk.blueBright(`${url.path} (${url.type})`)} in ${chalk.grey(`${Date.now() - start}ms`)}`);
+            Logger.log(
+                `Pong ${chalk.blueBright(
+                    `${url.path} (${url.type})`
+                )} in ${chalk.grey(`${Date.now() - start}ms`)}`
+            );
             isUp = true;
         } catch (err) {
-            Logger.error(`Pinging ${chalk.blueBright(url)} failed, reason: ${chalk.redBright(err)}`);
+            Logger.error(
+                `Pinging ${chalk.blueBright(
+                    url
+                )} failed, reason: ${chalk.redBright(err)}`
+            );
             isUp = false;
         }
         summary.push({
             path: url.path,
             type: url.type.toUpperCase(),
             timetaken: Date.now() - start,
-            up: isUp
+            up: isUp,
         });
     }
     Logger.log(`Finished pinging ${chalk.blueBright(config.urls.length)} urls`);
     await renderSummary(summary);
     Logger.log("Finished rendering summary.md");
-}
+};
 
 start();
 
@@ -50,12 +59,16 @@ interface IConfig {
 }
 
 async function getConfig(): Promise<IConfig> {
-    const cp = path.join(__dirname, "..", "config.yml");
+    const cp = path.join(process.cwd(), "config.yml");
     try {
         const rc = await fs.readFile(cp);
-        return ymlp.parse(rc.toString());
-    } catch(err) {
-        Logger.error(`Could not parse config from ${chalk.blueBright(cp)}, reason: ${chalk.redBright(err)}`);
+        return yaml.parse(rc.toString());
+    } catch (err) {
+        Logger.error(
+            `Could not parse config from ${chalk.blueBright(
+                cp
+            )}, reason: ${chalk.redBright(err)}`
+        );
         Logger.warn(`Exiting...`);
         return process.exit(0);
     }
@@ -76,13 +89,24 @@ async function renderSummary(opts: ISummary[]): Promise<void> {
         let sum = rc.toString();
         const vars = {
             lastUpdated: new Date().toLocaleString(),
-            state: opts.map(x => `- \`${x.type.toUpperCase()}\` [${x.path}](${x.path}) - **${x.up ? "Up" : "Down"}** (${x.timetaken}ms)`).join("\n")
+            state: opts
+                .map(
+                    (x) =>
+                        `- \`${x.type.toUpperCase()}\` [${x.path}](${
+                            x.path
+                        }) - **${x.up ? "Up" : "Down"}** (${x.timetaken}ms)`
+                )
+                .join("\n"),
         };
         Object.entries(vars).forEach(([key, val]) => {
-            sum = sum.replace(new RegExp(`{{ ${key } }}`, "g"), val);
+            sum = sum.replace(new RegExp(`{{ ${key} }}`, "g"), val);
         });
         await fs.writeFile(out, sum);
-    } catch(err) {
-        return Logger.error(`Could not parse template from ${chalk.blueBright(temp)}, reason: ${chalk.redBright(err)}`);
+    } catch (err) {
+        return Logger.error(
+            `Could not parse template from ${chalk.blueBright(
+                temp
+            )}, reason: ${chalk.redBright(err)}`
+        );
     }
 }

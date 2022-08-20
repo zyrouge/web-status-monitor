@@ -1,13 +1,15 @@
 import chalk from "chalk";
 
-export const Logger = {
-    log(text: string) {
+export class Logger {
+    static log(text: string) {
         console.log(`${chalk.blue("[~]")} ${text}`);
-    },
-    warn(text: string) {
+    }
+
+    static warn(text: string) {
         console.log(`${chalk.yellow("[!]")} ${text}`);
-    },
-    error(text: string) {
+    }
+
+    static error(text: string) {
         console.log(`${chalk.red("[X]")} ${text}`);
     }
 }
