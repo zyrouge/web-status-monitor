@@ -8,7 +8,7 @@ on:
 env:
     GIT_CONFIG_NAME: "[bot] web-status-monitor"
     GIT_CONFIG_EMAIL: "wsm@users.noreply.github.com"
-    GIT_COMMIT_MESSAGE: "🗒️ Updated Summary"
+    GIT_COMMIT_MESSAGE: "[actions] 🗒️ Updated Summary"
 
 jobs:
     build:
@@ -27,14 +27,10 @@ jobs:
             - name: 🛸 Pinging sites
               run: npm start
 
-            - name: ⌨️ Commit files
-              run: |
-                  git config --local user.name ${{ env.GIT_CONFIG_NAME }}
-                  git config --local user.email ${{ env.GIT_CONFIG_EMAIL }}
-                  git add summary.md
-                  git commit -m "${{ env.GIT_COMMIT_MESSAGE }}"
-
             - name: 🚀 Push changes
-              uses: ad-m/github-push-action@master
+              uses: zyrouge/gh-push-action@v1.0.4
               with:
+                  local-username: ${{ env.GIT_CONFIG_NAME }}
+                  local-email: ${{ env.GIT_CONFIG_EMAIL }}
+                  commit-message: ${{ env.GIT_COMMIT_MESSAGE }}
                   github_token: ${{ secrets.GITHUB_TOKEN }}
