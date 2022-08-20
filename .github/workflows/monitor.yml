@@ -33,4 +33,4 @@ jobs:
                   local-username: ${{ env.GIT_CONFIG_NAME }}
                   local-email: ${{ env.GIT_CONFIG_EMAIL }}
                   commit-message: ${{ env.GIT_COMMIT_MESSAGE }}
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
