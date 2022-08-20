@@ -15,10 +15,16 @@ export const ConfigEntityMethodSchema = fields.or(
 
 export type IConfigEntityMethod = FieldType<typeof ConfigEntityMethodSchema>;
 
-export const ConfigEntitySchema = fields.object({
-    url: fields.string(),
+export const ConfigDefaultEntitySchema = fields.object({
     method: fields.nullable(ConfigEntityMethodSchema),
     headers: fields.nullable(fields.record(fields.string(), fields.string())),
+});
+
+export type IConfigDefaultEntity = FieldType<typeof ConfigDefaultEntitySchema>;
+
+export const ConfigEntitySchema = fields.object({
+    url: fields.string(),
+    ...ConfigDefaultEntitySchema.model,
 });
 
 export type IConfigEntity = FieldType<typeof ConfigEntitySchema>;
