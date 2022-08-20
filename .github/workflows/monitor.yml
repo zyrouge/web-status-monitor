@@ -5,28 +5,34 @@ on:
     schedule:
         - cron: "*/5 * * * *"
 
+env:
+    GIT_CONFIG_NAME: "[bot] web-status-monitor"
+    GIT_CONFIG_EMAIL: "wsm@users.noreply.github.com"
+    GIT_COMMIT_MESSAGE: "🗒️ Updated Summary"
+
 jobs:
     build:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
               with:
                   node-version: "18.x"
+                  cache: "npm"
 
-            - name: 🛸 Check status
-              run: cd src && npm install && npm start
+            - name: 🚧 Preparing run
+              run: npm ci
 
-            - name: 🛸 Check status
-              run: cd src && npm install && npm start
+            - name: 🛸 Pinging sites
+              run: npm start
 
             - name: ⌨️ Commit files
               run: |
-                  git config --local user.email "bot@zyrouge.gq"
-                  git config --local user.name  "WSM [bot]"
-                  git add .
-                  git commit -m "🗒️ Updated Summary"
+                  git config --local user.name ${{ env.GIT_CONFIG_NAME }}
+                  git config --local user.email ${{ env.GIT_CONFIG_EMAIL }}
+                  git add summary.md
+                  git commit -m "${{ env.GIT_COMMIT_MESSAGE }}"
 
             - name: 🚀 Push changes
               uses: ad-m/github-push-action@master
