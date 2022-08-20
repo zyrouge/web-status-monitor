@@ -28,7 +28,7 @@ jobs:
               run: npm start
 
             - name: 🚀 Push changes
-              uses: zyrouge/gh-push-action@v1.0.4
+              uses: zyrouge/gh-push-action@v1.0.5
               with:
                   local-username: ${{ env.GIT_CONFIG_NAME }}
                   local-email: ${{ env.GIT_CONFIG_EMAIL }}
