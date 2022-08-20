@@ -40,3 +40,12 @@ export const getConfig = async () => {
         );
     }
 };
+
+export const ConfigEntityDefaults = {
+    method: "get" as IConfigEntityMethod,
+    headers: {
+        "User-Agent": "[bot] github.com/zyrouge/web-status-monitor",
+    },
+};
+
+ConfigEntityDefaults.method;

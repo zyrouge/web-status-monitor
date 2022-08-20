@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IConfigEntity } from "./config";
+import { IConfigEntity, ConfigEntityDefaults } from "./config";
 import { SummarySchema } from "./summary";
 
 export const ping = async (
@@ -9,9 +9,10 @@ export const ping = async (
     const start = Date.now();
     let up = false;
     const url = entity.url;
-    const method = entity.method ?? defaults?.method ?? "get";
+    const method =
+        entity.method ?? defaults?.method ?? ConfigEntityDefaults.method;
     const headers = {
-        "User-Agent": "Pong [bot]",
+        ...ConfigEntityDefaults.headers,
         ...defaults?.headers,
         ...entity.headers,
     };

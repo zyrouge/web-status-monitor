@@ -7,7 +7,7 @@ on:
 
 env:
     GIT_CONFIG_NAME: "[bot] web-status-monitor"
-    GIT_CONFIG_EMAIL: "wsm@users.noreply.github.com"
+    GIT_CONFIG_EMAIL: "action@github.com"
     GIT_COMMIT_MESSAGE: "[actions] 🗒️ Updated Summary"
 
 jobs:
