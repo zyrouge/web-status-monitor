@@ -15,7 +15,7 @@
         "chalk": "^4.1.0",
         "fs-extra": "^10.1.0",
         "solid-schema": "^1.1.1",
-        "yaml": "^2.1.1"
+        "yaml": "^2.2.2"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.7",
